@@ -84,7 +84,7 @@ while True:
                 gps.timestamp_utc.hour,  # not get all data like year, day,
                 gps.timestamp_utc.minute,  # month!
                 gps.timestamp_utc.second,
-                gps.timestamp_utc.microsecond
+                gps.timestamp_utc.microsecond,
             )
         )
         print(f"Latitude: {gps.latitude:.6f} degrees")

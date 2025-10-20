@@ -509,7 +509,9 @@ class GPS:
             month = int(date[2:4])
             year = 2000 + int(date[4:6])
 
-        self.timestamp_utc = time.struct_time((year, month, day, hours, mins, secs, milisecs, 0, -1))
+        self.timestamp_utc = time.struct_time(
+            (year, month, day, hours, mins, secs, milisecs, 0, -1)
+        )
 
     def _parse_vtg(self, data: List[str]) -> bool:
         # VTG - Course Over Ground and Ground Speed
