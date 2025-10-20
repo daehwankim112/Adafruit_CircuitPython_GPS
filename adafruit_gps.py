@@ -507,7 +507,7 @@ class GPS:
         else:
             day = int(date[0:2])
             month = int(date[2:4])
-            year = 2000 + int(date[4:6])
+            year = int(date[4:6])
 
         self.timestamp_utc = datetime.strptime(
             str("%d/%d/%d %d:%d:%d.%d" % (day, month, year, hours, mins, secs, milisecs)),
