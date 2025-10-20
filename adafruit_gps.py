@@ -495,7 +495,7 @@ class GPS:
         hours = int(time_utc[0:2])
         mins = int(time_utc[2:4])
         secs = int(time_utc[4:6])
-        milisecs = int(time_utc[7:10])
+        milisecs = int(time_utc[7:10]) if len(time_utc) >= 10 and time_utc[7:10].isdigit() else 0
         if date is None:
             if self.timestamp_utc is None:
                 day, month, year = 0, 0, 0
@@ -509,8 +509,9 @@ class GPS:
             month = int(date[2:4])
             year = 2000 + int(date[4:6])
 
-        self.timestamp_utc = time.struct_time(
-            (year, month, day, hours, mins, secs, milisecs, 0, -1)
+        self.timestamp_utc = datetime.strptime(
+            str("%d/%d/%d %d:%d:%d.%d" % (day, month, year, hours, mins, secs, milisecs)),
+            "%d/%m/%y %H:%M:%S.%f",
         )
 
     def _parse_vtg(self, data: List[str]) -> bool:
